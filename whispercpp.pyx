@@ -6,7 +6,7 @@ import numpy as np
 import requests
 import os
 from pathlib import Path
-from io import BytesIO
+# from io import BytesIO
 
 MODELS_DIR = str(Path('~/.ggml-models').expanduser())
 print("Saving models to:", MODELS_DIR)
@@ -112,9 +112,9 @@ cdef class Whisper:
         elif (type(filename) == str) :
             temp = load_audio(<bytes>filename)
         elif (type(filname) == bytes):
-            temp = load_audio(filename)
-        elif (type(filname) == BytesIO):
-            temp = load_audio(filename.getvalue()
+            temp = load_audio(<bytes>filename)
+        # elif (type(filname) == BytesIO):
+            # temp = load_audio(filename.getvalue()
         else :
             temp = load_audio(<bytes>TEST_FILE)
 
